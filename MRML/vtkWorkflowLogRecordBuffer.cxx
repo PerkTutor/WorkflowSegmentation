@@ -156,7 +156,7 @@ void vtkWorkflowLogRecordBuffer
         continue;
       }
     
-      if ( labelRecord->GetTime() > newTransformBufferNode->GetMessageAtIndex( i )->GetTime() )
+      if ( labelRecord->GetTime() >= newTransformBufferNode->GetMessageAtIndex( i )->GetTime() )
 	    {
         labelRecord->GetVector()->SetLabel( newTransformBufferNode->GetMessageAtIndex( i )->GetMessageString() );
 	    }
@@ -825,7 +825,7 @@ vnl_matrix<double>* vtkWorkflowLogRecordBuffer
 
     for( int d = 0; d < zeroMeanRecord->GetVector()->Size(); d++ )
 	  {
-	    zeroMeanRecord->GetVector()->IncrementElement( d, meanVector->GetElement( d ) );
+	    zeroMeanRecord->GetVector()->IncrementElement( d, - meanVector->GetElement( d ) );
 	  }
 
 	  zeroMeanBuffer->AddRecord( zeroMeanRecord );

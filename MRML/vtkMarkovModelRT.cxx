@@ -79,7 +79,7 @@ void vtkMarkovModelRT
 
 	    for ( int k = 0; k < this->GetNumStates(); k++ )
 	    {
-        double currProb = currDelta->GetElement( k ) + A.at(k)->GetElement( j );
+        double currProb = currDelta->GetElement( k ) + logA.at(k)->GetElement( j );
         if ( currProb > maxProb ) // Note: A[k].get(j) == A[k][j]
 		    {
           maxProb = currProb;
